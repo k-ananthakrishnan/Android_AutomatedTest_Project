@@ -19,7 +19,7 @@ class EmailValidatorTest {
 
     @Test
     fun emailValidator_InvalidEmailNoTld_ReturnsFalse() {
-        Assert.assertFalse(EmailValidator.isValidEmail("123@abc"))
+        assertFalse(EmailValidator.isValidEmail("123@abc"))
     }
 
     @Test
