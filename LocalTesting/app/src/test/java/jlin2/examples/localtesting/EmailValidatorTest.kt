@@ -2,6 +2,7 @@ package jlin2.examples.localtesting
 
 import org.junit.Assert
 import org.junit.Test
+import org.junit.Assert.assertFalse
 
 class EmailValidatorTest {
     @Test
@@ -18,7 +19,7 @@ class EmailValidatorTest {
 
     @Test
     fun emailValidator_InvalidEmailNoTld_ReturnsFalse() {
-        assertFalse(EmailValidator.isValidEmail("123@abc"))
+        Assert.assertFalse(EmailValidator.isValidEmail("123@abc"))
     }
 
     @Test
