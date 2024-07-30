@@ -15,4 +15,14 @@ class EmailValidatorTest {
         //Correct email address subdomain format, such as 123@abc.co.ca
         Assert.assertTrue(EmailValidator.isValidEmail("123@abc.co.ca"))
     }
+
+    @Test
+    fun emailValidator_InvalidEmailNoTld_ReturnsFalse() {
+        assertFalse(EmailValidator.isValidEmail("123@abc"))
+    }
+
+    @Test
+    fun emailValidator_InvalidEmailDoubleDot_ReturnsFalse() {
+        assertFalse(EmailValidator.isValidEmail("123@abc..com"))
+    }
 }
