@@ -39,6 +39,7 @@ class MainActivityInstrumentedTest {
         onView(withId(R.id.show_text_view)).check(matches(isDisplayed()))
         onView(withId(R.id.show_text_view)).check(matches(withText("123")))
     }
+
     @Test
     fun testChangeTextButtonWithAbcdef() {
         //Enter “abcdef” and press Change Text button, and test the string
@@ -46,4 +47,5 @@ class MainActivityInstrumentedTest {
         onView(withId(R.id.changeTextBt)).perform(click())
         onView(withId(R.id.textToBeChanged)).check(matches(withText("abcdef")))
     }
+
 }
