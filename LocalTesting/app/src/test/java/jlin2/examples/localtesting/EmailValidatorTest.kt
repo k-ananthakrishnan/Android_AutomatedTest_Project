@@ -3,6 +3,7 @@ package jlin2.examples.localtesting
 import org.junit.Assert
 import org.junit.Test
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 
 class EmailValidatorTest {
     @Test
@@ -41,6 +42,11 @@ class EmailValidatorTest {
     fun emailValidator_EmptyString_ReturnsFalse() {
         //Incorrect email address format (empty string), such as “”
         assertFalse(EmailValidator.isValidEmail(""))
+    }
+
+    @Test
+    fun emailValidator_NullEmail_ReturnsFalse() {
+        assertFalse(EmailValidator.isValidEmail(null))
     }
 
 
