@@ -31,5 +31,17 @@ class EmailValidatorTest {
         //Incorrect email address format (without username), such as @abc.comgit
         assertFalse(EmailValidator.isValidEmail("@abc.com"))
     }
+    @Test
+    fun emailValidator_InvalidEmailNoDomain_ReturnsFalse() {
+        //Incorrect email address format (without domain), such as testing123
+        assertFalse(EmailValidator.isValidEmail("testing123"))
+    }
+
+    @Test
+    fun emailValidator_EmptyString_ReturnsFalse() {
+        //Incorrect email address format (empty string), such as “”
+        assertFalse(EmailValidator.isValidEmail(""))
+    }
+
 
 }
