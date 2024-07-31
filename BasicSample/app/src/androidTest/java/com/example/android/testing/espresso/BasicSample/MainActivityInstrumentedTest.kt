@@ -48,4 +48,12 @@ class MainActivityInstrumentedTest {
         onView(withId(R.id.textToBeChanged)).check(matches(withText("abcdef")))
     }
 
+    @Test
+    fun testOpenActivityAndChangeTextButtonWithAbcdef() {
+        onView(withId(R.id.editTextUserInput)).perform(typeText("abcdef"), closeSoftKeyboard())
+        onView(withId(R.id.activityChangeTextBtn)).perform(click())
+        onView(withId(R.id.show_text_view)).check(matches(isDisplayed()))
+        onView(withId(R.id.show_text_view)).check(matches(withText("abcdef")))
+    }
+
 }
