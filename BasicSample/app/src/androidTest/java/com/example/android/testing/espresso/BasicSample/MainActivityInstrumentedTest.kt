@@ -3,6 +3,7 @@ package com.example.android.testing.espresso.BasicSample
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.action.ViewActions.clearText
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.closeSoftKeyboard
 import androidx.test.espresso.action.ViewActions.typeText
@@ -54,6 +55,14 @@ class MainActivityInstrumentedTest {
         onView(withId(R.id.activityChangeTextBtn)).perform(click())
         onView(withId(R.id.show_text_view)).check(matches(isDisplayed()))
         onView(withId(R.id.show_text_view)).check(matches(withText("abcdef")))
+    }
+
+    @Test
+    fun testEmptyTextChangeTextButton() {
+        onView(withId(R.id.editTextUserInput)).perform(clearText(), closeSoftKeyboard())
+        onView(withId(R.id.changeTextBt)).perform(click())
+
+        onView(withId(R.id.textToBeChanged)).check(matches(withText("")))
     }
 
 }
