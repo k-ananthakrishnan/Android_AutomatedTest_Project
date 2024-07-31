@@ -65,4 +65,17 @@ class MainActivityInstrumentedTest {
         onView(withId(R.id.textToBeChanged)).check(matches(withText("")))
     }
 
+    @Test
+    fun testEmptyTextOpenActivityAndChangeTextButton() {
+        onView(withId(R.id.editTextUserInput)).perform(clearText(), closeSoftKeyboard())
+        onView(withId(R.id.activityChangeTextBtn)).perform(click())
+
+        Thread.sleep(2000)
+
+        onView(withId(R.id.show_text_view)).check(matches(isDisplayed()))
+
+        onView(withId(R.id.show_text_view)).check(matches(withText("")))
+    }
+
+
 }
