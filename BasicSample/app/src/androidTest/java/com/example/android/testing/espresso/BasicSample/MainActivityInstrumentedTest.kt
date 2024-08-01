@@ -22,19 +22,20 @@ class MainActivityInstrumentedTest {
     @get:Rule
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
     @Test
-    fun testChangeTextButton() {
-        // Enter text into EditText and press Change Text button
+    fun InstrumentedTest_ChangeTextButtonAndCheckText() {
+//        Enter “123” and press Change Text button, and test the string
         Espresso.onView(ViewMatchers.withId(R.id.editTextUserInput))
             .perform(ViewActions.typeText("123"), ViewActions.closeSoftKeyboard())
         Espresso.onView(ViewMatchers.withId(R.id.changeTextBt)).perform(ViewActions.click())
 
-        // Verify the text in the TextView
         Espresso.onView(ViewMatchers.withId(R.id.textToBeChanged))
             .check(ViewAssertions.matches(ViewMatchers.withText("123")))
     }
 
     @Test
-    fun testOpenActivityAndChangeTextButton() {
+
+    fun InstrumentedTest_OpenActivityAndChangeTextButton() {
+//        Enter “123” and press Open Activity and Change Text button,and test the string in ShowTextActivity
         onView(withId(R.id.editTextUserInput)).perform(typeText("123"), closeSoftKeyboard())
         onView(withId(R.id.activityChangeTextBtn)).perform(click())
         onView(withId(R.id.show_text_view)).check(matches(isDisplayed()))
@@ -42,7 +43,7 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
-    fun testChangeTextButtonWithAbcdef() {
+    fun InstrumentedTest_ChangeTextButtonWithAbcdef() {
         //Enter “abcdef” and press Change Text button, and test the string
         onView(withId(R.id.editTextUserInput)).perform(typeText("abcdef"), closeSoftKeyboard())
         onView(withId(R.id.changeTextBt)).perform(click())
@@ -50,7 +51,8 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
-    fun testOpenActivityAndChangeTextButtonWithAbcdef() {
+    fun InstrumentedTest_OpenActivityAndChangeTextButtonWithAbcdef() {
+//        Enter “abcdef” and press Open Activity and Change Text button, and test the string in ShowTextActivity
         onView(withId(R.id.editTextUserInput)).perform(typeText("abcdef"), closeSoftKeyboard())
         onView(withId(R.id.activityChangeTextBtn)).perform(click())
         onView(withId(R.id.show_text_view)).check(matches(isDisplayed()))
@@ -58,7 +60,8 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
-    fun testEmptyTextChangeTextButton() {
+    fun InstrumentedTest_EmptyTextChangeTextButton() {
+//        Without entering anything and press Change Text button and test the string (empty/null)
         onView(withId(R.id.editTextUserInput)).perform(clearText(), closeSoftKeyboard())
         onView(withId(R.id.changeTextBt)).perform(click())
 
@@ -66,11 +69,12 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
-    fun testEmptyTextOpenActivityAndChangeTextButton() {
+    fun InstrumentedTest_EmptyTextOpenActivityAndChangeTextButton() {
+//        Without entering anything and press Open Activity and Change Text button, and test the string in ShowTextActivity
         onView(withId(R.id.editTextUserInput)).perform(clearText(), closeSoftKeyboard())
         onView(withId(R.id.activityChangeTextBtn)).perform(click())
 
-        Thread.sleep(2000)
+//        Thread.sleep(2000)
 
         onView(withId(R.id.show_text_view)).check(matches(isDisplayed()))
 
